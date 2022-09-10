@@ -10,7 +10,7 @@ export class CategoryController {
 
         try {
             const createCategoryService = new CreateCategoryService();
-            const category = await CreateCategoryService.execute({ name, color })
+            const category = await createCategoryService.execute({ name, color })
             return response.status(201).json(category);
         } catch (error) {
             return response.json({ message: error.message });
