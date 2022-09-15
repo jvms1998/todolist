@@ -27,41 +27,40 @@ export class CreateTodo1662950651734 implements MigrationInterface {
                 },
                 {
                     name: "user_id",
-                    type: "integer"
+                    type: "integer",
+                    isNullable: true
                 },
                 {
                     name: "category_id",
-                    type: "integer"
-                }
-            ]
-        })
-        ),
+                    type: "integer",
+                    isNullable: true
+                },
+            ],
 
-            await queryRunner.createForeignKey(
-                "todo",
-                new TableForeignKey({
+            foreignKeys: [
+                {
                     columnNames: ["user_id"],
                     referencedColumnNames: ["id"],
                     referencedTableName: "users",
-                    onDelete: "CASCADE",
-                })
-            ),
-
-            await queryRunner.createForeignKey(
-                "todo",
-                new TableForeignKey({
+                    onUpdate: "CASCADE",
+                    onDelete: "CASCADE"
+                },
+                {
                     columnNames: ["category_id"],
                     referencedColumnNames: ["id"],
                     referencedTableName: "category",
-                    onDelete: "CASCADE",
-                })
-            ),       
+                    onUpdate: "CASCADE",
+                    onDelete: "CASCADE",  
+                }         
+            ]
+                     
+        })
+        )
 
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("todo")
-        await queryRunner.dropForeignKey("todo")
     }
 
 }
