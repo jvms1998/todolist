@@ -35,6 +35,17 @@ export class CreateTodo1662950651734 implements MigrationInterface {
                     type: "integer",
                     isNullable: true
                 },
+                {
+                    name: "created_at",
+                    type: "timestamp",
+                    default: "now()"
+                },
+                {
+                    name: "updated_at",
+                    type: "timestamp",
+                    default: "now()"
+                }
+
             ],
 
             foreignKeys: [
