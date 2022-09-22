@@ -19,10 +19,11 @@ class ListTodoService {
         user_id
     }: IRequest): Promise<Todo[]> {
 
-        const todo = this.todoRepository.find({where:{
-            user_id
-        },
-        relations: ["category"]
+        const todo = this.todoRepository.find({
+            where: {
+                user_id
+            },
+            relations: ["category"]
         });
 
         return todo;
